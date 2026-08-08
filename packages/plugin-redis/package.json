@@ -7,7 +7,7 @@
     "build": "tsc"
   },
   "dependencies": {
-    "ioredis": "^5.3.0"
+    "ioredis": "^6.0.0"
   },
   "peerDependencies": {
     "@agent-runtime/core": "*"
