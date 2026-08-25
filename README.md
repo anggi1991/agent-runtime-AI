@@ -21,14 +21,24 @@ It is designed for building:
 - Internal business agents
 - Multi-agent enterprise systems
 
-Instead of centering everything around prompts,
-Agent Runtime centers everything around events, workflows, and business processes.
+Instead of centering everything around prompts, Agent Runtime centers everything around events, workflows, and business processes.
 
 ### Features
 ✓ **Universal Event Bus**: Generic pub/sub for all business events.
 ✓ **AI Provider agnostic**: Native interfaces for OpenAI, Anthropic, Gemini, or Local LLMs.
 ✓ **Agent SDK**: Abstract classes to build autonomous workers.
 ✓ **Pipelines**: Compose modular event-processing steps.
+
+## 🌎 Adoption & Ecosystem
+
+Agent Runtime is designed as a reusable foundation for AI-native business applications.
+
+Current implementations and experiments:
+
+- **Marketing OS Razqashop** - AI-assisted marketing intelligence and automation platform built on top of Agent Runtime concepts.
+- Experimental enterprise AI workflow systems across automation domains.
+
+The project is currently in an early open-source growth phase and welcomes developers interested in AI agents, workflow orchestration, and event-driven systems.
 
 ## 🗺️ Roadmap
 
@@ -75,7 +85,6 @@ graph TD;
     App[External Application] -->|Publishes Event| Bus[Event Bus]
     Bus -->|Routes to| Agent[Agent]
     Bus -->|Routes to| Pipeline[Pipeline]
-    
     Agent -->|Reasons with| AI[AI Provider]
     AI -->|Returns Action| Agent
     Agent -->|Executes/Publishes| Bus
@@ -83,9 +92,7 @@ graph TD;
 
 ## 📦 Quick Start
 
-```bash
-npm install @agent-runtime/core
-```
+> Package publication is planned. For now, use the repository source directly for development.
 
 ```typescript
 import { Runtime, EventBus, Agent, Pipeline } from "@agent-runtime/core";
@@ -108,10 +115,7 @@ class LeadScoringAgent extends Agent {
 
 runtime.register(new LeadScoringAgent());
 
-// 4. Start processing
 runtime.start();
-
-// 5. Trigger an event
 runtime.publish({ type: "lead.created", payload: { email: "test@example.com" } });
 ```
 
