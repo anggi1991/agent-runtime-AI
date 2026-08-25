@@ -50,14 +50,7 @@ The repository includes example implementations to demonstrate how Agent Runtime
 
 Architecture overview:
 
-```mermaid
-graph LR;
-    Application[Business Application] --> EventBus[Event Bus]
-    EventBus --> Agent[Autonomous Agent]
-    EventBus --> Pipeline[Workflow Pipeline]
-    Agent --> AI[AI Provider]
-    AI --> Action[Business Action]
-```
+![Agent Runtime Architecture](docs/assets/agent-runtime-architecture.svg)
 
 Future demos will include recorded workflow executions and visual examples of multi-agent orchestration.
 
