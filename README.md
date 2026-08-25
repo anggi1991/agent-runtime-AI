@@ -40,6 +40,27 @@ Current implementations and experiments:
 
 The project is currently in an early open-source growth phase and welcomes developers interested in AI agents, workflow orchestration, and event-driven systems.
 
+## 🎬 Demo & Examples
+
+The repository includes example implementations to demonstrate how Agent Runtime can be extended into practical AI workflows:
+
+- Marketing agent workflow
+- Customer support agent workflow
+- Human approval workflow
+
+Architecture overview:
+
+```mermaid
+graph LR;
+    Application[Business Application] --> EventBus[Event Bus]
+    EventBus --> Agent[Autonomous Agent]
+    EventBus --> Pipeline[Workflow Pipeline]
+    Agent --> AI[AI Provider]
+    AI --> Action[Business Action]
+```
+
+Future demos will include recorded workflow executions and visual examples of multi-agent orchestration.
+
 ## 🗺️ Roadmap
 
 ### v0.1
@@ -97,13 +118,9 @@ graph TD;
 ```typescript
 import { Runtime, EventBus, Agent, Pipeline } from "@agent-runtime/core";
 
-// 1. Initialize Runtime
 const runtime = new Runtime();
-
-// 2. Configure your preferred AI Provider
 runtime.use(new AnthropicProvider(process.env.ANTHROPIC_API_KEY));
 
-// 3. Register your custom autonomous agent
 class LeadScoringAgent extends Agent {
   async onEvent(event) {
     if (event.type === 'lead.created') {
@@ -114,7 +131,6 @@ class LeadScoringAgent extends Agent {
 }
 
 runtime.register(new LeadScoringAgent());
-
 runtime.start();
 runtime.publish({ type: "lead.created", payload: { email: "test@example.com" } });
 ```
